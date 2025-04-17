@@ -21,6 +21,7 @@ nav a {
   text-decoration: none;
   display: inline-block;
   margin: 0 10px;
+  cursor: pointer;
 }
 
 nav a:hover {
@@ -75,6 +76,10 @@ form button {
   margin-top: 10px;
 }
 
+form button[type="submit"] {
+  cursor: pointer;
+}
+
 /* Question Styles */
 h2 {
   text-align: center;
@@ -112,7 +117,7 @@ button:hover {
   border-radius: 10px;
 }
 
-.artwork p {
+artwork p {
   margin: 5px 0;
   text-align: center;
 }

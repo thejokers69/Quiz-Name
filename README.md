@@ -46,6 +46,18 @@ This is an interactive Personality Quiz web app built as a final project for Cod
 - `App.jsx` – Main app logic and routing
 - `main.jsx` – React entry point
 
+## Recent Improvements
+
+### State Reset and Unique Results for Each User
+- Improved the quiz logic so that when a new user starts the quiz, all previous quiz state (answers, element, artwork, etc.) is fully reset. This ensures that each user gets a fresh experience and their result is not affected by the previous user.
+- Enhanced the "Go Back" button on the results page: it now resets the quiz state before returning to the home page, so a new user will not inherit the previous user's answers or result.
+- This change prevents different users from getting the same element/color just because of leftover state, making the quiz more fair and personalized.
+
+### Codebase Cleanup
+- Removed a redundant Results.jsx file from the project root to avoid confusion and ensure only the correct Results component in `src/components/Results.jsx` is used.
+
+These improvements were made for better user experience and code maintainability, even though they were not explicitly required in the exercise.
+
 ## Credits
 
 - Developed by **Mohamed Lakssir** for CodeDex Final Project

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "./UserContext";
 import { useNavigate } from "react-router-dom";
 
-export default function Results({ element, artwork: initialArtwork }) {
+export default function Results({ element, artwork: initialArtwork, resetQuiz }) {
   const { name } = useContext(UserContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(!initialArtwork);
@@ -41,6 +41,11 @@ export default function Results({ element, artwork: initialArtwork }) {
     // eslint-disable-next-line
   }, [element]);
 
+  function handleGoBack() {
+    resetQuiz();
+    navigate("/");
+  }
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 40 }}>
       <div style={{ background: '#fff', borderRadius: 12, boxShadow: '0 2px 12px #0001', padding: 32, minWidth: 320, maxWidth: 400, textAlign: 'center' }}>
@@ -68,7 +73,7 @@ export default function Results({ element, artwork: initialArtwork }) {
             <button onClick={fetchArtworkAgain} style={{ background: '#0074D9', color: '#fff', border: 'none', padding: '12px 28px', borderRadius: 6, fontSize: 16, cursor: 'pointer', marginTop: 10 }}>Refresh</button>
           </>
         )}
-        <button onClick={() => navigate("/")}
+        <button onClick={handleGoBack}
           style={{ background: '#0074D9', color: '#fff', border: 'none', padding: '12px 28px', borderRadius: 6, fontSize: 16, cursor: 'pointer', marginTop: 10 }}
         >
           Go Back

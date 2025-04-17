@@ -11,7 +11,14 @@ const questions = [
     question: "What's your favorite color?",
     options: ["Red 🔴", "Blue 🔵", "Green 🟢", "Yellow 🟡"],
   },
-  // Add more questions as needed
+  {
+    question: "Which environment do you feel most at home in?",
+    options: ["Mountains 🏔️", "Ocean 🌊", "Forest 🌳", "Sky ☁️"],
+  },
+  {
+    question: "Pick a trait that describes you best:",
+    options: ["Passionate ❤️", "Calm 😌", "Grounded 🌱", "Free-spirited 🕊️"],
+  },
 ];
 
 const keywords = {
@@ -21,12 +28,22 @@ const keywords = {
   Air: "air",
 };
 
-const elements = {
+const answerToElement = {
+  // Color
   "Red 🔴": "Fire",
   "Blue 🔵": "Water",
   "Green 🟢": "Earth",
   "Yellow 🟡": "Air",
-  // Map more options if you add more questions
+  // Environment
+  "Mountains 🏔️": "Earth",
+  "Ocean 🌊": "Water",
+  "Forest 🌳": "Earth",
+  "Sky ☁️": "Air",
+  // Trait
+  "Passionate ❤️": "Fire",
+  "Calm 😌": "Water",
+  "Grounded 🌱": "Earth",
+  "Free-spirited 🕊️": "Air",
 };
 
 export default function App() {
@@ -40,15 +57,30 @@ export default function App() {
     setCurrentQuestionIndex(currentQuestionIndex + 1);
   }
 
+  function resetQuiz() {
+    setCurrentQuestionIndex(0);
+    setAnswers([]);
+    setElement("");
+    setArtwork(null);
+  }
+
   function determineElement(answers) {
     const counts = {};
     answers.forEach(function(answer) {
-      const element = elements[answer];
+      const element = answerToElement[answer];
       counts[element] = (counts[element] || 0) + 1;
     });
-    return Object.keys(counts).reduce(function(a, b) {
-      return counts[a] > counts[b] ? a : b;
+    // If tie, pick the first one in order Fire, Water, Earth, Air
+    const order = ["Fire", "Water", "Earth", "Air"];
+    let max = 0;
+    let result = order[0];
+    order.forEach(el => {
+      if ((counts[el] || 0) > max) {
+        max = counts[el];
+        result = el;
+      }
     });
+    return result;
   }
 
   async function fetchArtwork(keyword) {
@@ -94,7 +126,7 @@ export default function App() {
                 onAnswer={handleAnswer}
               />
             ) : (
-              <Results element={element} artwork={artwork} />
+              <Results element={element} artwork={artwork} resetQuiz={resetQuiz} />
             )
           }
         />

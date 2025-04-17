@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Question({ question, options, onAnswer }) {
   return (
-    <div>
+    <div className="card">
       <h2>{question}</h2>
       {options.map(function (option) {
         return (

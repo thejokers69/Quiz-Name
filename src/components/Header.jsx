@@ -10,7 +10,9 @@ export default function Header() {
       <span style={{ display: 'inline-block', transform: isHeads ? 'scaleX(1)' : 'scaleX(-1)' }}>
         <img src={coinLogo} alt="Coin Logo" style={{ height: '40px', verticalAlign: 'middle', marginRight: '10px' }} />
       </span>
-      <h1 style={{ display: 'inline', verticalAlign: 'middle' }}>Personality Quiz</h1>
+      <h1 style={{ display: 'inline', verticalAlign: 'middle' }}>
+        Personality Quiz <span style={{ fontSize: '0.6em', color: '#555', marginLeft: '10px' }}>by Mohamed Lakssir</span>
+      </h1>
       <nav>
         <Link to="/">Home</Link>
         <Link to="/quiz">Quiz</Link>

@@ -14,16 +14,18 @@ export default function UserForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Enter your name:</label>
-      <input
-        id="name"
-        type="text"
-        value={inputName}
-        onChange={e => setInputName(e.target.value)}
-        required
-      />
-      <button type="submit">Start Quiz</button>
-    </form>
+    <div className="card">
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="name">Enter your name:</label>
+        <input
+          id="name"
+          type="text"
+          value={inputName}
+          onChange={e => setInputName(e.target.value)}
+          required
+        />
+        <button type="submit">Start Quiz</button>
+      </form>
+    </div>
   );
 }

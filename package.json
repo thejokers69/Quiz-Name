@@ -1,7 +1,7 @@
 {
   "name": "quiz-name",
   "version": "1.0.0",
-  "homepage": "https://thejokers69ml.github.io/quiz-name",
+  "homepage": "https://thejokers69ml.github.io/Quiz-Name",
   "main": "index.js",
   "scripts": {
     "dev": "vite",

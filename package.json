@@ -1,10 +1,14 @@
 {
   "name": "quiz-name",
   "version": "1.0.0",
+  "homepage": "https://thejokers69ml.github.io/quiz-name",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "author": "Mohamed Lakssir",
   "license": "ISC",
@@ -27,6 +31,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "prettier": "^3.5.3",
     "typescript": "^5.8.3",
-    "vite": "^6.3.1"
+    "vite": "^6.3.1",
+    "gh-pages": "^5.0.0"
   }
 }
